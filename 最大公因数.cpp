@@ -1,13 +1,15 @@
-#include<stdio.h>
-#include<math.h>
-#include<iostream>
-#include<time.h>
+#include <stdio.h>
+#include <math.h>
+#include <iostream>
+#include <time.h>
 
 using namespace std;
 
-int OJLD(int m,int n) {
+int OJLD(int m, int n)
+{
 	int r = m % n;
-	while (r != 0) {
+	while (r != 0)
+	{
 		m = n;
 		n = r;
 		r = m % n;
@@ -15,42 +17,48 @@ int OJLD(int m,int n) {
 	return n;
 }
 
-int LXZSJC(int m, int n) {
+int LXZSJC(int m, int n)
+{
 	int t = min(m, n);
-	while (1) {
-		if (m % t == 0 && n % t == 0) break;
+	while (1)
+	{
+		if (m % t == 0 && n % t == 0)
+			break;
 		t--;
 	}
 	return t;
 }
 
-int FJZYS(int m, int n) {
+int FJZYS(int m, int n)
+{
 	int i, factor = 1;
-	for(i=2;i<=m&&i<=n;i++)
-		while (m%i==0&&n%i==0)
+	for (i = 2; i <= m && i <= n; i++)
+		while (m % i == 0 && n % i == 0)
 		{
 			factor *= i;
-			m = m / i; n = n / i;
+			m = m / i;
+			n = n / i;
 		}
 	return factor;
 }
 
-int mian() {
+int mian()
+{
 	int m, n;
 	cin >> m;
 	cin >> n;
 	clock_t start, finish;
 	start = clock();
-	cout<<"Á¬ÐøÕûÊý¼ì²â½á¹ûÎª:"<<LXZSJC(m,n)<<endl;
+	cout << "è¿žç»­æ•´æ•°æ£€æµ‹ç»“æžœä¸º:" << LXZSJC(m, n) << endl;
 	finish = clock();
-	printf("ÏûºÄÊ±¼äÎª:%fºÁÃë\n\n", (double)(finish - start) / (CLOCKS_PER_SEC * 1000.0));
+	printf("æ¶ˆè€—æ—¶é—´ä¸º:%fæ¯«ç§’\n\n", (double)(finish - start) / (CLOCKS_PER_SEC * 1000.0));
 	start = clock();
-	cout << "Å·¼¸ÀïµÃ³ý·¨½á¹ûÎª:" << OJLD(m, n) << endl;
+	cout << "æ¬§å‡ é‡Œå¾—é™¤æ³•ç»“æžœä¸º:" << OJLD(m, n) << endl;
 	finish = clock();
-	printf("ÏûºÄÊ±¼äÎª:%fºÁÃë\n\n", (double)(finish - start) / (CLOCKS_PER_SEC * 1000.0));
+	printf("æ¶ˆè€—æ—¶é—´ä¸º:%fæ¯«ç§’\n\n", (double)(finish - start) / (CLOCKS_PER_SEC * 1000.0));
 	start = clock();
-	cout << "·Ö½âÖÊÒòÊý½á¹ûÎª:" << FJZYS(m, n) << endl;
+	cout << "åˆ†è§£è´¨å› æ•°ç»“æžœä¸º:" << FJZYS(m, n) << endl;
 	finish = clock();
-	printf("ÏûºÄÊ±¼äÎª:%fºÁÃë\n\n", (double)(finish - start) / (CLOCKS_PER_SEC * 1000.0));
+	printf("æ¶ˆè€—æ—¶é—´ä¸º:%fæ¯«ç§’\n\n", (double)(finish - start) / (CLOCKS_PER_SEC * 1000.0));
 	return 0;
 }
